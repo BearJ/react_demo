@@ -27,7 +27,8 @@ function todos(state = [], action){
         default:
             return state;
     }
-}function visibilityFilter(state = Constants.VisibilityFilters.SHOW_ALL, action) {
+}
+function visibilityFilter(state = Constants.VisibilityFilters.SHOW_ALL, action) {
     switch (action.type) {
         case Constants.SET_VISIBILITY_FILTER:
             return action.filter;
@@ -44,9 +45,28 @@ function todoApp(state = initialState, action) {
 }
 */
 
+// 当你触发 action 后，combineReducers 返回的 todoApp 会负责调用两个 reducer
 const todoApp = combineReducers({
     visibilityFilter,
     todos
 });
 
 export default todoApp;
+
+/*
+// todoAPP还可以这样调用，但不建议。
+let previousState = {
+    visibleTodoFilter: 'SHOW_ALL',
+    todos: [
+        {
+            text: 'Read the docs.',
+            complete: false
+        }
+    ]
+}
+let action = {
+    type: 'ADD_TODO',
+    text: 'Understand the flow.'
+}
+let nextState = todoApp(previousState, action);
+*/
