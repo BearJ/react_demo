@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Router, Route, Link, browserHistory } from "react-router";
+import { Router, Route, Link, hashHistory } from "react-router";
 import { render } from "react-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
@@ -40,7 +40,7 @@ class IndexApp extends Component{
 }
 
 render((
-    <Router>
+    <Router history={hashHistory}>
         <Route path="/" component={IndexApp}>
             <Route path="app" component={ReduxApp} />
             <Route path="about" component={About} />
