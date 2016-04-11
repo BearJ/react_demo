@@ -14,3 +14,11 @@ export function completeTodo(index) {
 export function setVisibilityFilter(filter) {
     return { type: Constants.SET_VISIBILITY_FILTER, filter };
 }
+
+export function requestjQuery() {
+    return { type: "requestjQuery" };
+}
+
+export function getjQuery(text) {
+    return { type: "getjQuery", text };
+}

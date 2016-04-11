@@ -36,6 +36,19 @@ function visibilityFilter(state = Constants.VisibilityFilters.SHOW_ALL, action) 
             return state;
     }
 }
+function fetchHandler(state = [], action){
+    switch(action.type){
+        case "requestjQuery":
+            console.log("requestjQuery");
+            return state;
+            break;
+        case "getjQuery":
+            console.log("getjQuery", action.text);
+            return state;
+        default:
+            return state;
+    }
+}
 /*
 function todoApp(state = initialState, action) {
     return {
@@ -48,7 +61,8 @@ function todoApp(state = initialState, action) {
 // 当你触发 action 后，combineReducers 返回的 todoApp 会负责调用两个 reducer
 const todoApp = combineReducers({
     visibilityFilter,
-    todos
+    todos,
+    fetchHandler
 });
 
 export default todoApp;
