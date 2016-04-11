@@ -9,7 +9,7 @@
 import * as Constants from "../constants/index";
 import { combineReducers } from "redux";
 
-function todos(state = [], action){
+function todos(state = [{text: "Bear", completed: false}], action){
     switch(action.type){
         case Constants.ADD_TODO:
             return [...state, {
@@ -36,15 +36,15 @@ function visibilityFilter(state = Constants.VisibilityFilters.SHOW_ALL, action) 
             return state;
     }
 }
-function fetchHandler(state = [], action){
+function fetchHandler(state = "fetch init", action){
     switch(action.type){
         case "requestjQuery":
             console.log("requestjQuery");
-            return state;
+            return "request";
             break;
         case "getjQuery":
             console.log("getjQuery", action.text);
-            return state;
+            return "get";
         default:
             return state;
     }

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from "react";
+import { createSelector } from "reselect";
 import { connect } from "react-redux";
 import { addTodo, completeTodo, setVisibilityFilter } from "../actions/index";
 import * as Constants from "../constants/index";
@@ -33,6 +34,7 @@ App.propTypes = {
 };
 
 function selectTodos(todos, filter) {
+    console.log("selectTodos");
     switch (filter) {
         case Constants.VisibilityFilters.SHOW_ALL:
             return todos;
@@ -43,13 +45,34 @@ function selectTodos(todos, filter) {
     }
 }
 
+
 // 基于全局 state ，返回我们想注入的 props
 // 注意：使用 https://github.com/faassen/reselect 效果更佳。
+// 这是没用reselect的用法
+/*
 function select(state) {
     return {
         visibleTodos: selectTodos(state.todos, state.visibilityFilter),
         visibilityFilter: state.visibilityFilter
     };
 }
+*/
+
+
+// 这是reselect的用法
+const visibilityFilterSelector = (state) => state.visibilityFilter;
+const todosSelector = (state) => state.todos;
+
+const select = createSelector(
+    [visibilityFilterSelector, todosSelector],
+    (visibilityFilter, todos) => {
+        return {
+            visibleTodos: selectTodos(todos, visibilityFilter),
+            visibilityFilter
+        };
+    }
+);
+
+
 // 包装 component ，注入 dispatch 和 state 到其默认的 connect(select)(App) 中；
 export default connect(select)(App);
