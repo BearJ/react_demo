@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from "redux";
 import trunkMiddleware from "redux-thunk";
 import * as Constants from "../constants/index";
 import { addTodo, completeTodo, setVisibilityFilter } from "../actions/index";
-import { fetchjQuery } from "../middleware/trunk/index";
+import { fetchjQuery } from "../middleware/thunk/index";
 import todoApp from "../reducers/index"
 
 let todoStore = applyMiddleware(
