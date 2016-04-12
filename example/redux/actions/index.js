@@ -16,9 +16,9 @@ export function setVisibilityFilter(filter) {
 }
 
 export function requestjQuery() {
-    return { type: "requestjQuery" };
+    return { type: Constants.REQUEST_JQUERY };
 }
 
 export function getjQuery(text) {
-    return { type: "getjQuery", text };
+    return { type: Constants.GET_JQUERY, text };
 }

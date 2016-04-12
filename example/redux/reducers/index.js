@@ -38,17 +38,18 @@ function visibilityFilter(state = Constants.VisibilityFilters.SHOW_ALL, action) 
 }
 function fetchHandler(state = "fetch init", action){
     switch(action.type){
-        case "requestjQuery":
+        case Constants.REQUEST_JQUERY:
             console.log("requestjQuery");
             return "request";
             break;
-        case "getjQuery":
+        case Constants.GET_JQUERY:
             console.log("getjQuery", action.text);
             return "get";
         default:
             return state;
     }
 }
+// 没用combineReducers的做法
 /*
 function todoApp(state = initialState, action) {
     return {
